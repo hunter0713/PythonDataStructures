@@ -22,7 +22,15 @@ class Stack:
         while(temporary.getNext() != "null"):
             print(temporary.getValue())
             temporary = temporary.getNext()
-        print(self.m_top.getValue())
+        print(temporary.getValue())
+
+    def pop(self):
+        if(self.m_top.getValue() != "null"):
+            if(self.m_top.getNext() == "null"):
+                self.m_top.setValue("null")
+            else:
+                temp = self.m_top
+                self.m_top = temp.getNext()
 
 #########################################################
 
@@ -55,4 +63,4 @@ while(end == 0):
         pushVal = input("What value would you like to push?: ")
         s.push(pushVal)
     elif(menuInput == 3):
-        print("#3")
+        s.pop()
