@@ -1,5 +1,5 @@
 
-#########################################################
+############Stack Class#############################################
 class Stack:
     def __init__(self):
         self.m_top = Node("null")
@@ -31,8 +31,9 @@ class Stack:
             else:
                 temp = self.m_top
                 self.m_top = temp.getNext()
+                del temp
 
-#########################################################
+##########Node Class###############################################
 
 class Node:
     def __init__(self, value):
@@ -49,7 +50,7 @@ class Node:
     def setNext(self,newNext):
         self.m_next = newNext
 
-
+###########Menu Code###################################################
 end = 0
 print("Welcome to my Stack simulator!")
 s = Stack()
