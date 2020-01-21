@@ -1,51 +1,35 @@
-print("Welcome to my Stack simulator!" + "\n" + "1.)Print Stack \n" + "2.)Add Value to Stack \n" + "3.)Pop value \n")
-
-menuInput = input("Pick a Menu Option: ")
-if(menuInput == 1):
-    printStack
-elif(menuInput == 2):
-    add to stack
-elif(menuInput == 3):
-    pop value
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #########################################################
 class Stack:
-    def __init__(self, m_top):
-        self.m_top = Node(0,null)
+    def __init__(self):
+        self.m_top = Node("null")
+
 
     def push(self,value):
-        if(self.m_top.value == 0):
-           m_top = Node(value);
-            
-        
+        if(self.m_top.value == "null"):
+           self.m_top.setValue(value)
+
+
         else:
-    
-            temp = Node(m_top.getValue());
-            temp.setNext(m_top.getNext());
-            m_top = Node(value);
-            m_top.setNext(temp);
+
+            temp = Node(self.m_top.getValue());
+            temp.setNext(self.m_top.getNext());
+            self.m_top = Node(value);
+            self.m_top.setNext(temp);
+
+    def printStack(self):
+        temporary = self.m_top
+        while(temporary.getNext() != "null"):
+            print(temporary.getValue())
+            temporary = temporary.getNext()
+        print(self.m_top.getValue())
 
 #########################################################
-        
+
 class Node:
-    def __init__(self, value, m_next):
+    def __init__(self, value):
         self.value = value
-        self.m_next = m_next
+        self.m_next = "null"
 
     def getValue(self):
         return self.value
@@ -56,3 +40,19 @@ class Node:
         self.value = newVal
     def setNext(self,newNext):
         self.m_next = newNext
+
+
+end = 0
+print("Welcome to my Stack simulator!")
+s = Stack()
+while(end == 0):
+    print("\n1.)Print Stack \n" + "2.)Push Value to Stack \n" + "3.)Pop value \n")
+    menuInput = input("Pick a Menu Option: ")
+
+    if(menuInput == 1):
+        s.printStack()
+    elif(menuInput == 2):
+        pushVal = input("What value would you like to push?: ")
+        s.push(pushVal)
+    elif(menuInput == 3):
+        print("#3")
