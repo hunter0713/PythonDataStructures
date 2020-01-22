@@ -1,4 +1,4 @@
-#@author: Hunter Cobb, University of Kansas , @file: nodeStack.py , @date: 1/21/20, @brief: Node Based Stack object
+#@author: Hunter Cobb, University of Kansas , @file: nodeQueue.py , @date: 1/22/20, @brief: Node Based Queue object
 #class. Includes building the stack and the Nodes that build the stack.
 ##########Node Class###############################################
 
