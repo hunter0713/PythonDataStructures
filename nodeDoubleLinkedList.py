@@ -48,7 +48,7 @@ class DoubleLinked:
 
     def delete(self,value):
         tempo = self.m_front
-
+        flag = 0
         if(self.m_front.getValue() == value and self.m_front.getNext() != None): #delete used when the first element is to be deleted
             self.m_front = self.m_front.getNext()                               #but is not the only element in the list
             self.m_front.setBefore(None)
@@ -62,9 +62,10 @@ class DoubleLinked:
                     temp1 = tempor
                     tempor = tempor.getNext()
                     del temp1
+                    flag = 1
                     tempo.setNext(tempor)
                     tempor.setBefore(tempo)
-                if(tempo.getNext().getNext() == None): #delete used when the value is the last element of the list
+                if(tempo.getNext().getNext() == None and flag == 0): #delete used when the value is the last element of the list
                     tempor = tempo.getNext()
                     tempo.setNext(None)
                     del tempor
@@ -80,14 +81,17 @@ while(end == 0):
     menuInput = int(menuInput)
     if(menuInput == 1):
         s.printList()
-    if(menuInput == 2):
+    elif(menuInput == 2):
         pushVal = input("What value would you like to Insert?: ")
         s.insert(pushVal)
-    if(menuInput == 3):
+    elif(menuInput == 3):
         pushVal = input("What value would you like to Delete?: ")
+        pushVal = int(pushVal)
         s.delete(pushVal)
-    if(menuInput == 5):
+    elif(menuInput == 5):
         print("Exiting...")
         end = 1
-    if(menuInput == 4):
-        pass
+    elif(menuInput == 4):
+        dc = Node(4)
+    else:
+        print("Please choose a valid menu option")
