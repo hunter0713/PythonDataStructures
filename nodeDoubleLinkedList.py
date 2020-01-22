@@ -14,6 +14,9 @@ class Node:
     def getNext(self):
         return self.m_next
 
+    def getBefore(self):
+        return(self.m_before)
+
     def setValue(self,newVal):
         self.value = newVal
 
@@ -72,7 +75,7 @@ class DoubleLinked:
             else:
                 self.m_front = Node(None) #delete used when the value is the first and only Node
 
-    def findSmallest(self):
+    def findSmallest(self): #returns the smallest element of the list
         smallest = self.m_front.getValue()
         temp = self.m_front
         while(temp.getNext() != None):
@@ -80,7 +83,8 @@ class DoubleLinked:
             if(temp.getValue() < smallest):
                 smallest = temp.getValue()
         return(str(smallest))
-    def findLargest(self):
+
+    def findLargest(self):#returns the largest element of the list
         largest = self.m_front.getValue()
         temp = self.m_front
         while(temp.getNext() != None):
@@ -88,12 +92,35 @@ class DoubleLinked:
             if(temp.getValue() > largest):
                 largest = temp.getValue()
         return(str(largest))
+
+    def findAverage(self):#returns the average of the list numbers
+        temp = self.m_front
+        count = 1
+        avg = self.m_front.getValue()
+        while(temp.getNext() != None):
+            temp = temp.getNext()
+            avg += temp.getValue()
+            count += 1
+        return(str(avg/count))
+
+    def reverseList(self):
+        temp = DoubleLinked()
+        temporary = self.m_front
+        while(temporary.getNext() != None):
+            temporary = temporary.getNext()
+        while(temporary != None):
+            temp.insert(temporary.getValue())
+            temporary = temporary.getBefore()
+        self.m_front = temp.m_front
+
+
+
 ###########Menu Code###################################################
 end = 0
 print("Welcome to my Doubly Linked List simulator!")
 s = DoubleLinked()
 while(end == 0):
-    print("\n1.)Print List \n" + "2.)Insert Value\n" + "3.)Delete value \n" + "4.)Find Smallest Value\n" + "5.)Find Largest Value\n"+"7.)Exit\n")
+    print("\n1.)Print List \n" + "2.)Insert Value\n" + "3.)Delete value \n" + "4.)Find Smallest Value\n" + "5.)Find Largest Value\n"+"6.)Find Average\n"+"7.)Reverse List\n"+"8.)Exit\n")
     menuInput = input("Pick a Menu Option: ")
     menuInput = int(menuInput)
     if(menuInput == 1):
@@ -107,13 +134,16 @@ while(end == 0):
         pushVal = input("What value would you like to Delete?: ")
         pushVal = int(pushVal)
         s.delete(pushVal)
-    elif(menuInput == 6):
-        print("Exiting...")
-        end = 1
     elif(menuInput == 4):
         print("smallest: " + s.findSmallest())
     elif(menuInput == 5):
         print("largest: " + s.findLargest())
-
+    elif(menuInput == 6):
+        print("Average: " + s.findAverage())
+    elif(menuInput == 7):
+        s.reverseList()
+    elif(menuInput == 8):
+        print("Exiting...")
+        end = 1
     else:
         print("Please choose a valid menu option")
