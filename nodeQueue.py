@@ -1,37 +1,5 @@
 #@author: Hunter Cobb, University of Kansas , @file: nodeStack.py , @date: 1/21/20, @brief: Node Based Stack object
 #class. Includes building the stack and the Nodes that build the stack.
-############Stack Class#############################################
-class Queue:
-    def __init__(self):
-        self.m_front = Node("null")
-        self.m_back = Node("null")
-
-
-    def enqueue(self,value):
-        temp = self.m_back
-        if(self.m_front.getValue() == "null"):
-            self.m_front.setValue(value)
-        elif(self.m_back.getValue() == "null"):
-            self.m_back.setValue(value)
-            self.m_front.setNext(self.m_back)
-        else:
-            self.m_back = Node(value)
-            temp.setNext(self.m_back)
-    def dequeue(self):
-        if(self.m_front != "null"):
-            if(self.m_back == "null"):
-                self.m_front.setValue("null")
-            else:
-                self.m_front = self.m_front.getNext()
-    def peek(self):
-        return(self.m_front.getValue())
-
-    def printQueue(self):
-        tempo = self.m_front
-        while(tempo.getValue() != "null"):
-            print(tempo.getValue())
-            self.m_front = self.m_front.getNext()
-        self.m_front = tempo
 ##########Node Class###############################################
 
 class Node:
@@ -51,6 +19,38 @@ class Node:
     def setNext(self,newNext):
         self.m_next = newNext
 
+############Stack Class#############################################
+class Queue:
+    def __init__(self):
+        self.m_front = Node("null")
+        self.m_back = Node("null")
+
+
+    def enqueue(self,value):
+        temp = self.m_back
+        if(self.m_front.getValue() == "null"):
+            self.m_front.setValue(value)
+        else:
+            if(self.m_back.getValue() == "null"):
+                self.m_back.setValue(value)
+                self.m_front.setNext(self.m_back)
+            else:
+                self.m_back = Node(value)
+                temp.setNext(self.m_back)
+    def dequeue(self):
+        if(self.m_front != "null"):
+            if(self.m_back == "null"):
+                self.m_front.setValue("null")
+            else:
+                self.m_front = self.m_front.getNext()
+    def peek(self):
+        return(str(self.m_front.getValue()))
+
+    def printQueue(self):
+        temporary = self.m_front
+        while(temporary != "null"):
+            print(temporary.getValue())
+            temporary = temporary.getNext()
 ###########Menu Code###################################################
 end = 0
 print("Welcome to my Stack simulator!")

@@ -32,7 +32,7 @@ class Stack:
                 del temp
 
     def peek(self):
-        return(self.m_top.getValue())
+        return(str(self.m_top.getValue()))
 
 ##########Node Class###############################################
 
