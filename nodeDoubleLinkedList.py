@@ -71,16 +71,35 @@ class DoubleLinked:
                     del tempor
             else:
                 self.m_front = Node(None) #delete used when the value is the first and only Node
+
+    def findSmallest(self):
+        smallest = self.m_front.getValue()
+        temp = self.m_front
+        while(temp.getNext() != None):
+            temp = temp.getNext()
+            if(temp.getValue() < smallest):
+                smallest = temp.getValue()
+        return(str(smallest))
+    def findLargest(self):
+        largest = self.m_front.getValue()
+        temp = self.m_front
+        while(temp.getNext() != None):
+            temp = temp.getNext()
+            if(temp.getValue() > largest):
+                largest = temp.getValue()
+        return(str(largest))
 ###########Menu Code###################################################
 end = 0
 print("Welcome to my Doubly Linked List simulator!")
 s = DoubleLinked()
 while(end == 0):
-    print("\n1.)Print Queue \n" + "2.)Insert Value\n" + "3.)Delete value \n" + "4.)Peek Front Value\n" + "5.)Exit\n")
+    print("\n1.)Print List \n" + "2.)Insert Value\n" + "3.)Delete value \n" + "4.)Find Smallest Value\n" + "5.)Find Largest Value\n"+"7.)Exit\n")
     menuInput = input("Pick a Menu Option: ")
     menuInput = int(menuInput)
     if(menuInput == 1):
+        print("\n============\nYour List: ")
         s.printList()
+        print("============\n")
     elif(menuInput == 2):
         pushVal = input("What value would you like to Insert?: ")
         s.insert(pushVal)
@@ -88,10 +107,13 @@ while(end == 0):
         pushVal = input("What value would you like to Delete?: ")
         pushVal = int(pushVal)
         s.delete(pushVal)
-    elif(menuInput == 5):
+    elif(menuInput == 6):
         print("Exiting...")
         end = 1
     elif(menuInput == 4):
-        dc = Node(4)
+        print("smallest: " + s.findSmallest())
+    elif(menuInput == 5):
+        print("largest: " + s.findLargest())
+
     else:
         print("Please choose a valid menu option")
