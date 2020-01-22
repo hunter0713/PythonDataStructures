@@ -1,4 +1,5 @@
-
+#@author: Hunter Cobb, University of Kansas , @file: nodeStack.py , @date: 1/21/20, @brief: Node Based Stack object
+#class. Includes building the stack and the Nodes that build the stack.
 ############Stack Class#############################################
 class Stack:
     def __init__(self):
